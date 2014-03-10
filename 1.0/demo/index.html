@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Rainlib的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.1/seed.js" charset="utf-8"></script>
+</head>
+<body>
+<h2>Rainlib的demo</h2>
+<span class="bns-btn">test</span>
+
+<script>
+    var S = KISSY;
+    if (S.Config.debug) {
+        var srcPath = "../../";
+        S.config({
+            packages:[
+                {
+                    name:"gallery/rainlib",
+                    path:srcPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
+    }
+
+    S.use('gallery/rainlib/1.0/index', function (S, Rainlib) {
+          var rain = new Rainlib();
+          rain.setup("setup");
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "rainlib",
+    "comName":"Rainlib",
+    "version": "1.0",
+    "desc": "",
+    "tag":"彩虹装修局部渲染引擎",
+    "githubName":"sinbo520@gmail.com",
+    "author": {
+        "name": "子竹",
+        "email": "zizhu.hzb@taobao.com",
+        "page": ""
+    },
+	"flexComboPort":"81",
+	"reserveServerPort":"8089",
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}
