@@ -5,7 +5,7 @@
 * demo：[http://gallery.kissyui.com/rainlib/1.0/demo/index.html](http://gallery.kissyui.com/rainlib/1.0/demo/index.html)
 
 ## 使用说明
-  * rainlib是彩虹装修系统的前端渲染包，负责从后端加载数据，在指定的区域渲染数据
+  * rainlib是彩虹装修系统的前端渲染包，负责从后端加载数据，在指定的区域选择指定的模板渲染数据
   * 通过gallary引入rainlib组件
   * var rain = new Rainlib()
   * rain.setup(id, sessionid) 渲染装修内容
