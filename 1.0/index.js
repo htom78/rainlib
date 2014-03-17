@@ -9,8 +9,8 @@ KISSY.add(function(S, Node, IO, Template) {
   $ = Node.all;
   views = {};
   views.draw = "<div class=\"rain-recom u3\">\n  <ul class=\"rain-left\">\n    <li><a href=\"\" target=\"_blank\"><img src=\"http://gtms01.alicdn.com/tps/i1/T1C1TmFkXaXXaC1Jrl-250-250.png\" alt=\"\">\n        <div class=\"rain-product-info\">\n          <div class=\"title\">测试</div>\n          <div class=\"price u-1-2\">$12.4</div>\n          <div class=\"special u-1-2\">$3.9</div>\n        </div></a></li>\n    {{#each items}}<li class=\"{{cls}}\"><a href=\"\" target=\"_blank\"><img src=\"http://gtms01.alicdn.com/tps/i1/T1C1TmFkXaXXaC1Jrl-250-250.png\" alt=\"\">\n        <div class=\"rain-product-info\">\n          <div class=\"title\">{{title}}</div>\n          <div class=\"price u-1-2\">{{price}}</div>\n          <div class=\"special u-1-2\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
-  views.photo = "这里是相册组件";
-  views.recom = "推荐相册";
+  views.photo = "相册模板";
+  views.recom = "推荐模板";
   loader = function(sessionId, target) {
     var error, param;
     param = {};
@@ -20,7 +20,7 @@ KISSY.add(function(S, Node, IO, Template) {
       return target.hide();
     };
     return new IO({
-      url: "http://5aoa.cd",
+      url: "http://tad.t.taobao.com",
       type: "get",
       dataType: "jsonp",
       data: param,
