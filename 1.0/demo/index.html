@@ -7,8 +7,8 @@
 </head>
 <body>
 <h2>Rainlib的demo</h2>
-<span class="bns-btn">test</span>
-
+<span class="bns-btn">预览区域</span>
+<div id="render"></div>
 <script>
     var S = KISSY;
     if (S.Config.debug) {
@@ -26,9 +26,9 @@
     }
 
     S.use('gallery/rainlib/1.0/index', function (S, Rainlib) {
-          var rain = new Rainlib();
-          rain.setup("setup");
-    })
+          var rain = new Rainlib("render", {});
+          rain.setup();
+    });
 </script>
 </body>
 </html>
