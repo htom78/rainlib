@@ -9,7 +9,7 @@
   * 通过gallary引入rainlib组件
   * var rain = new Rainlib()
   * rain.setup(id, sessionid) 渲染装修内容
-  * id：需要渲染区块的ID编号
+  * id：需要渲染区块的ID编号，例如<div id="targetId"></div>，则ID=targetId
   * sessionid：当前用户的登录id
 
 ## changelog
