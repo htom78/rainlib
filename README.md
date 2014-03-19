@@ -8,14 +8,14 @@
   * rainlib是彩虹装修系统的前端渲染包，负责从后端加载数据，在指定的区域选择指定的模板渲染数据
   * 通过gallary引入rainlib组件
   ### 函数调用
-  '''javascript
+  ``` javascript
   var rain = new Rainlib()
   var result ＝ rain.setup(args) 渲染装修内容
-  '''
+  ```
   ###参数说明
-  '''
+  ``` json
   {"targetId":["渲染区域的ID","支持多个ID"],"userId":"当前用户ID","objectId":"当前的商品对象或页面对象"}
-  '''
+  ```
   ### 返回值说明
   * 返回值bool类型，true渲染成功，false渲染失败
 
