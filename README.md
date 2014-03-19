@@ -10,11 +10,21 @@
 ## 函数调用
 ``` javascript
 var rain = new Rainlib()
-var result ＝ rain.setup(args) 渲染装修内容
+var args = {}; //参数对象
+args["targetId"] = ["render"];
+args["userId"] = "";
+args["objectId"] = "";
+
+var rain = new Rainlib(args);
+var result = rain.setup(); //启动装修
 ```
 ## 参数说明
 ``` json
-{"targetId":["渲染区域的ID","支持多个ID"],"userId":"当前用户ID","objectId":"当前的商品对象或页面对象"}
+{ 
+  "targetId":["渲染区域的ID","支持多个ID"],
+  "userId":"当前用户ID",
+  "objectId":"当前的商品对象或页面对象"
+}
 ```
 ## 返回值说明
 * 返回值bool类型，true渲染成功，false渲染失败

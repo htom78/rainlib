@@ -26,11 +26,11 @@
 
     S.use('gallery/rainlib/1.0/index', function (S, Rainlib) {
           var args = {};
-          args["targetId"] = "render";
+          args["targetId"] = ["render"];
           args["userId"] = "";
           args["objectId"] = "";
           var rain = new Rainlib(args);
-          rain.setup();
+          var result = rain.setup();
     });
 </script>
 </body>

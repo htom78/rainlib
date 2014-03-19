@@ -46,7 +46,7 @@ KISSY.add(function(S, Node, IO, Template) {
   };
   Rainlib = (function() {
     function Rainlib(args) {
-      self.target = Node.all("#" + args.targetId);
+      self.target = Node.all("#" + args.targetId[0]);
       self.userId = args.userId;
       self.objectId = args.objectId;
       self.data = args.data;
