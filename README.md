@@ -15,7 +15,6 @@ args["userId"] = "";
 args["objectId"] = "";
 args["data"] = {};
 
-var rain = new Rainlib()
 var rain = new Rainlib(args);
 var result = rain.setup(); //启动装修
 ```
