@@ -9,12 +9,13 @@
   * 通过gallary引入rainlib组件
 ## 函数调用
 ``` javascript
-var rain = new Rainlib()
 var args = {}; //参数对象
 args["targetId"] = ["render"];
 args["userId"] = "";
 args["objectId"] = "";
+args["data"] = {};
 
+var rain = new Rainlib()
 var rain = new Rainlib(args);
 var result = rain.setup(); //启动装修
 ```
@@ -23,7 +24,8 @@ var result = rain.setup(); //启动装修
 { 
   "targetId":["渲染区域的ID","支持多个ID"],
   "userId":"当前用户ID",
-  "objectId":"当前的商品对象或页面对象"
+  "objectId":"当前的商品对象或页面对象",
+  "data":"数据源对象，可以为空"
 }
 ```
 ## 返回值说明
