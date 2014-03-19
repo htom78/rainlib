@@ -7,6 +7,7 @@
 ## 使用说明
   * rainlib是彩虹装修系统的前端渲染包，负责从后端加载数据，在指定的区域选择指定的模板渲染数据
   * 通过gallary引入rainlib组件
+
 ## 函数调用
 ``` javascript
 var args = {}; //参数对象
