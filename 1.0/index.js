@@ -86,5 +86,5 @@ KISSY.add(function(S, Node, IO, Template) {
   })();
   return Rainlib;
 }, {
-  requires: ['node', 'io', 'xtemplate', 'gallery/rainlib/1.0/index.css']
+  requires: ['node', 'ajax', 'xtemplate', 'gallery/rainlib/1.0/index.css']
 });

@@ -52,7 +52,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   };
   Rainlib = (function() {
     function Rainlib(args) {
-      self.target = Node.all("#" + args.targetId);
+      self.target = Node.all("#" + args.targetId[0]);
       self.userId = args.userId;
       self.objectId = args.objectId;
       self.data = args.data;
@@ -92,6 +92,6 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   })();
   return Rainlib;
 }, {
-  requires: ['node', 'io', 'xtemplate', 'gallery/gallery/rainlib/1.0/index.css']
+  requires: ['node', 'ajax', 'xtemplate', 'gallery/rainlib/1.0/index.css']
 });
 
