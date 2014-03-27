@@ -11,80 +11,121 @@ gallery/rainlib/1.0/index
 */
 
 KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
-  var $, Rainlib, loader, render, views;
+  var $, Rainlib, getStyle, loader, render, views;
   $ = Node.all;
   views = {};
-  views.draw = "<div class=\"rain-recom u3\">\n  <ul class=\"rain-left\">\n    <li><a href=\"\" target=\"_blank\"><img src=\"http://gtms01.alicdn.com/tps/i1/T1C1TmFkXaXXaC1Jrl-250-250.png\" alt=\"\">\n        <div class=\"rain-product-info\">\n          <div class=\"title\">测试</div>\n          <div class=\"price u-1-2\">$12.4</div>\n          <div class=\"special u-1-2\">$3.9</div>\n        </div></a></li>\n    {{#each items}}<li class=\"{{cls}}\"><a href=\"\" target=\"_blank\"><img src=\"http://gtms01.alicdn.com/tps/i1/T1C1TmFkXaXXaC1Jrl-250-250.png\" alt=\"\">\n        <div class=\"rain-product-info\">\n          <div class=\"title\">{{title}}</div>\n          <div class=\"price u-1-2\">{{price}}</div>\n          <div class=\"special u-1-2\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
-  views.photo = "相册模板";
-  views.recom = "推荐模板";
-  loader = function(target) {
-    var error, param;
+  views.draw = "<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em></em>\n          {{#if cls!=='default'}}<div class=\"product-info\" class=\"cls\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  <dd class=\"price\">￥<span class=\"special\">{{price}}</span>\n                  </dd>\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
+  views.photo = "<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            <div class=\"price\">${{price}}</div>\n            <div class=\"special\">${{special}}</div>\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
+  views.recom = "<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              <div class=\"price\">{{price}}</div>\n              <div class=\"special\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
+  loader = function(context) {
+    var param, url;
     param = {};
-    param["id"] = target.userId;
-    param["object"] = target.objectId;
-    error = function() {
-      console.log("发生异常，打点到其它服务器");
-      return target.target.hide();
-    };
+    param["sellerid"] = context.args.sellerId;
+    param["buyerid"] = context.args.userId;
+    param["appid"] = 1;
+    param["itemid"] = context.args.objectId;
+    param["areas"] = context.args.targetId;
+    url = window.location.href;
+    if (url.indexOf("daily") > -1 && url.indexOf(".net") > -1) {
+      param["debug"] = true;
+      url = "http://tad.skip.daily.taobao.net";
+    } else {
+      url = "http://tad.skip.taobao.com";
+    }
+    url = "http://tad.skip.daily.taobao.net";
+    url += "/api/list";
+    url = "http://rainbow.t.daily.taobao.net/debug/17.htm"
     return new IO({
-      url: "http://tad.t.taobao.com",
+      url: url,
       type: "get",
       dataType: "jsonp",
       data: param,
-      fail: error,
+      fail: context.error,
+      jsonp: "callback",
       success: function(data) {
-        target.result = true;
-        return render(data, target.target);
+        return render(data, context);
       }
     });
   };
-  render = function(data, target) {
-    var e, tpl;
-    tpl = views[data.name];
-    try {
-      render = new Template(tpl).render(data);
-      target.html(render);
-    } catch (_error) {
-      e = _error;
-      error();
+  getStyle = function(attr) {
+    var ch, k, matchs, result, v;
+    if (!attr) {
+      return "";
     }
+    result = "";
+    for (k in attr) {
+      v = attr[k];
+      matchs = k.match(/[A-Z]/);
+      if (!!matchs && matchs.length > 0) {
+        ch = matchs[0];
+        k = k.replace(ch, "-" + ch.toLowerCase());
+      }
+      result += k + ":" + v + ";";
+    }
+    return result;
+  };
+  render = function(data, context) {
+    var area, areaData, areaDataList, areaId, item, result, tpl, _i, _j, _len, _len1, _ref;
+    console.log(data);
+    for (areaId in data) {
+      areaDataList = data[areaId];
+      area = Node.all("#" + areaId);
+      result = "";
+      for (_i = 0, _len = areaDataList.length; _i < _len; _i++) {
+        areaData = areaDataList[_i];
+        tpl = views[areaData.name];
+        areaData.style = getStyle(areaData.style);
+        _ref = areaData.data;
+        for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+          item = _ref[_j];
+          if (!!item.style) {
+            item.style = getStyle(item.style);
+          }
+        }
+        console.log(areaData);
+        result += new Template(tpl).render(areaData);
+      }
+      if (result.length > 0) {
+        area.html(result);
+      }
+    }
+    context.result = true;
     return null;
   };
   Rainlib = (function() {
-    function Rainlib(args) {
-      self.target = Node.all("#" + args.targetId[0]);
-      self.userId = args.userId;
-      self.objectId = args.objectId;
-      self.data = args.data;
-      self.result = false;
-      self.isInit = false;
+    function Rainlib(args, callback) {
+      this.areas = args.targetId;
+      this.args = args;
+      this.data = args.data;
+      this.result = false;
+      this.isInit = false;
+      this.callback = callback;
     }
 
+    Rainlib.prototype.status = function() {
+      return this.result;
+    };
+
+    Rainlib.prototype.error = function(arg) {
+      if (!!this.callback) {
+        this.callback();
+      }
+      return this.result = false;
+    };
+
     Rainlib.prototype.setup = function() {
-      var data, html, item;
-      if (self.isInit) {
-        return self.result;
+      console.log("hello")
+      var html;
+      if (this.isInit) {
+        return this.result;
       }
-      self.isInit = true;
-      item = {
-        cls: "small",
-        title: "测试",
-        price: 12.8,
-        special: 18.0
-      };
-      data = {
-        cls: "test-cls",
-        items: [item, item, item, item, item, item]
-      };
-      render = new Template(views.draw).render(data);
-      self.target.html(render);
-      return;
-      if (!!self.data) {
-        html = render(self.data, self.target);
+      this.isInit = true;
+      if (!!this.data) {
+        html = render(this.data, this);
       } else {
-        loader(self);
+        loader(this);
       }
-      return self.result;
+      return this.result;
     };
 
     return Rainlib;
