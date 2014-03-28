@@ -34,7 +34,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
     }
     url = "http://tad.skip.daily.taobao.net";
     url += "/api/list";
-    url = "http://rainbow.t.daily.taobao.net/debug/17.htm"
+    // url = "http://rainbow.t.daily.taobao.net/debug/17.htm"
     return new IO({
       url: url,
       type: "get",
