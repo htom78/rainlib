@@ -15,9 +15,13 @@ args["targetId"] = ["render"];
 args["userId"] = "";
 args["objectId"] = "";
 args["data"] = {};
+var callback = function(){
+  alert("渲染异常");
+}
 
-var rain = new Rainlib(args);
+var rain = new Rainlib(args, callback);
 var result = rain.setup(); //启动装修
+
 ```
 ## 参数说明
 ``` json
@@ -37,6 +41,6 @@ var result = rain.setup(); //启动装修
 ### V1.0
 
     [!] 彩虹装修第一版发布，支持自定义区，图片混排，图片相册三个组件
-
+    [!] 组件更新完成
 
 
