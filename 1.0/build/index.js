@@ -8,15 +8,16 @@ gallery/rainlib/1.0/index
  * @fileoverview
  * @author 子竹<zizhu.hzb@taobao.com>
  * @module rainlib
+ * 1.0 for TAD
 */
 
 KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
-  var $, Rainlib, getStyle, loader, render, views;
+  var $, Rainlib, getStyle, glod, loader, render, views;
   $ = Node.all;
   views = {};
-  views.draw = "<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em></em>\n          {{#if cls!=='default'}}<div class=\"product-info\" class=\"cls\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  <dd class=\"price\">￥<span class=\"special\">{{price}}</span></dd>\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
-  views.photo = "<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            <div class=\"price\">${{price}}</div>\n            <div class=\"special\">${{special}}</div>\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
-  views.recom = "<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              <div class=\"price\">{{price}}</div>\n              <div class=\"special\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
+  views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em></em>\n          {{#if cls!=='default'}}<div class=\"product-info\" class=\"cls\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  <dd class=\"price\">￥<span class=\"special\">{{price}}</span></dd>\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
+  views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            <div class=\"price\">${{price}}</div>\n            <div class=\"special\">${{special}}</div>\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
+  views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              <div class=\"price\">{{price}}</div>\n              <div class=\"special\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
   loader = function(context) {
     var param, url;
     param = {};
@@ -90,6 +91,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
         if (result.length > 0) {
           area.html(result);
         }
+        glod(1, areaData.name);
       }
       context.result = true;
     } catch (_error) {
@@ -97,6 +99,15 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
       context.error(e);
     }
     return null;
+  };
+  glod = function(index, type) {
+    var img, url;
+    if (index === null) {
+      return;
+    }
+    url = "http://log.mmstat.com/shopflow.3." + index + "?template=" + type + "&t=" + (new Date().getTime());
+    img = new Image();
+    return img.src = url;
   };
   Rainlib = (function() {
     function Rainlib(args, callback) {
