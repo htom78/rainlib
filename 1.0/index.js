@@ -10,8 +10,8 @@ KISSY.add(function(S, Node, IO, Template) {
   $ = Node.all;
   views = {};
   views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em></em>\n          {{#if cls!=='default'}}<div class=\"product-info\" class=\"cls\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  <dd class=\"price\">￥<span class=\"special\">{{price}}</span></dd>\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
-  views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            <div class=\"price\">${{price}}</div>\n            <div class=\"special\">${{special}}</div>\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
-  views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              <div class=\"price\">{{price}}</div>\n              <div class=\"special\">{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
+  views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            <div class=\"price\">￥{{price}}</div>\n            <div class=\"special\">￥{{special}}</div>\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
+  views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              <div class=\"price\">￥{{price}}</div>\n              <div class=\"special\">￥{{special}}</div>\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
   loader = function(context) {
     var param, url;
     param = {};
@@ -85,7 +85,7 @@ KISSY.add(function(S, Node, IO, Template) {
         if (result.length > 0) {
           area.html(result);
         }
-        glod(1, areaData.name);
+        glod(data.taskID, areaData.name);
       }
       context.result = true;
     } catch (_error) {
@@ -94,12 +94,12 @@ KISSY.add(function(S, Node, IO, Template) {
     }
     return null;
   };
-  glod = function(index, type) {
+  glod = function(taskid, type) {
     var img, url;
-    if (index === null) {
+    if (taskid === null) {
       return;
     }
-    url = "http://log.mmstat.com/shopflow.3." + index + "?template=" + type + "&t=" + (new Date().getTime());
+    url = "http://log.mmstat.com/shopflow.3." + taskid + "?template=" + type + "&t=" + (new Date().getTime());
     img = new Image();
     return img.src = url;
   };
