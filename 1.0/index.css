@@ -53,47 +53,51 @@
     vertical-align: top;
     text-rendering: auto; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\000037}}
 #tad_detail_promote {
   padding-left: 8px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\000039}}
   #tad_detail_promote h3 {
     font-size: 13px;
     font-weight: bold;
     padding: 0;
     margin: 0 0 6px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000315}}
   #tad_detail_promote li, #tad_detail_promote dt, #tad_detail_promote dd {
     margin: 0;
     padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000320}}
   #tad_detail_promote .rain-product-info .price {
-    visibility: hidden !important; }
-
+    display: none !important; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000323}}
+  #tad_detail_promote .rain-product-info .special {
+    right: auto !important;
+    left: 2px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000330}}
 .rain-layout {
   *text-align: left;
   margin: 0 auto;
   text-rendering: optimizespeed;
   /* Webkit: fixes text-rendering: optimizeLegibility */ }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000337}}
 .rain-clear, .rain-layout, ul.rain-left, dl.rain-left, ol.rain-left, div.rain-left {
   *display: inline;
   zoom: 1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000340}}
   .rain-clear:after, .rain-layout:after, ul.rain-left:after, dl.rain-left:after, ol.rain-left:after, div.rain-left:after {
     content: "";
     display: table;
     clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000352}}
 ul.rain-left li, ol.rain-left li, dl.rain-left dt, dl.rain-left dd {
   float: left;
   display: block;
   list-style: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/huangzhibiao\/projects\/taobao\/rainbow\/rainbow\/sass\/index\.scss}line{font-family:\0000358}}
 .rain-inline {
   display: inline-block;
   *display: inline;
