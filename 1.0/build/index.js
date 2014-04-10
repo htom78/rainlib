@@ -30,7 +30,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
     if (url.indexOf("daily") > -1 && url.indexOf(".net") > -1) {
       url = "http://tad.skip.daily.taobao.net";
     } else {
-      url = "http://tad.skip.taobao.com";
+      url = "http://tad.t.taobao.com";
     }
     url += "/api/list";
     return new IO({
