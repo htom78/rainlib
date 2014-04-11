@@ -85,7 +85,7 @@ KISSY.add(function(S, Node, IO, Template) {
         if (result.length > 0) {
           area.html(result);
         }
-        glod(data.taskID, areaData.name);
+        glod(areaDataList.taskID, areaData.name);
       }
       context.result = true;
     } catch (_error) {
