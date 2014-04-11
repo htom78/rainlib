@@ -155,6 +155,6 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   })();
   return Rainlib;
 }, {
-  requires: ['node', 'ajax', 'xtemplate', 'gallery/gallery/rainlib/1.0/index.css']
+  requires: ['node', 'ajax', 'xtemplate', 'gallery/rainlib/1.0/index.css']
 });
 
