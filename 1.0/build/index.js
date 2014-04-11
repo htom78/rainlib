@@ -71,8 +71,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
       for (areaId in data) {
         areaDataList = data[areaId];
         area = $("#" + areaId);
-        if (!areaDataList.success) {
-          area.hide();
+        if (!areaDataList[0].success) {
           continue;
         }
         result = "";
@@ -94,6 +93,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
         }
         if (result.length > 0) {
           area.html(result);
+          area.show();
         }
         glod(areaDataList[0].taskID, areaData.name);
       }
@@ -128,12 +128,6 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
     };
 
     Rainlib.prototype.error = function(arg) {
-      var area, _i, _len, _ref;
-      _ref = this.areas;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        area = _ref[_i];
-        $("#" + area).hide();
-      }
       if (!!this.callback) {
         this.callback();
       }

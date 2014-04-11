@@ -122,12 +122,6 @@ KISSY.add(function(S, Node, IO, Template) {
     };
 
     Rainlib.prototype.error = function(arg) {
-      var area, _i, _len, _ref;
-      _ref = this.areas;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        area = _ref[_i];
-        $("#" + area).hide();
-      }
       if (!!this.callback) {
         this.callback();
       }
