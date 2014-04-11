@@ -65,8 +65,7 @@ KISSY.add(function(S, Node, IO, Template) {
       for (areaId in data) {
         areaDataList = data[areaId];
         area = $("#" + areaId);
-        if (!areaDataList.success) {
-          area.hide();
+        if (!areaDataList[0].success) {
           continue;
         }
         result = "";
@@ -88,6 +87,7 @@ KISSY.add(function(S, Node, IO, Template) {
         }
         if (result.length > 0) {
           area.html(result);
+          area.show();
         }
         glod(areaDataList[0].taskID, areaData.name);
       }
