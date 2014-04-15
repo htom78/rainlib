@@ -27,7 +27,6 @@ KISSY.add(function(S, Node, IO, Template) {
       url = "http://tad.t.taobao.com";
     }
     url += "/api/list";
-    url = "http://rainbow.t.daily.taobao.net/debug/2007.htm";
     return new IO({
       url: url,
       type: "get",
