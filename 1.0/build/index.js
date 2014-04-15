@@ -15,7 +15,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   var $, Rainlib, getStyle, glod, loader, render, views;
   $ = Node.all;
   views = {};
-  views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em></em>\n          {{#if cls!=='default'}}<div class=\"product-info {{cls}}\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  {{#if special!==1}}<dd class=\"price\">￥<span class=\"special\">{{special}}</span></dd>{{/if}}\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
+  views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em><s></s></em>\n          {{#if cls!=='default'}}<div class=\"product-info {{cls}}\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  {{#if special!==-1}}<dd class=\"price\">￥<span class=\"special\">{{special}}</span></dd>{{/if}}\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
   views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            {{#if special!==-1}}<div class=\"special\">￥{{special}}</div>{{/if}}\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
   views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              {{#if special!==-1}}<div class=\"special\">￥{{special}}</div>{{/if}}\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
   loader = function(context) {
@@ -33,12 +33,14 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
       url = "http://tad.t.taobao.com";
     }
     url += "/api/list";
+    url = "http://rainbow.t.daily.taobao.net/debug/2007.htm";
     return new IO({
       url: url,
       type: "get",
       dataType: "jsonp",
       data: param,
       fail: context.error,
+      timeout: 3000,
       jsonp: "callback",
       success: function(data) {
         if (!data) {
@@ -94,6 +96,8 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
         if (result.length > 0) {
           area.html(result);
           area.show();
+        } else {
+          context.error();
         }
         glod(areaDataList[0].taskID, areaData.name);
       }
@@ -135,13 +139,12 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
     };
 
     Rainlib.prototype.setup = function() {
-      var html;
       if (this.isInit) {
         return this.result;
       }
       this.isInit = true;
       if (!!this.data) {
-        html = render(this.data, this);
+        render(this.data, this);
       } else {
         loader(this);
       }
