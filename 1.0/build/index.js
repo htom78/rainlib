@@ -15,9 +15,9 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   var $, Rainlib, getStyle, glod, loader, render, views;
   $ = Node.all;
   views = {};
-  views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em><s></s></em>\n          {{#if cls!=='default'}}<div class=\"product-info {{cls}}\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  {{#if special!==-1}}<dd class=\"price\">￥<span class=\"special\">{{special}}</span></dd>{{/if}}\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
-  views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            {{#if special!==-1}}<div class=\"special\">￥{{special}}</div>{{/if}}\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
-  views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              {{#if special!==-1}}<div class=\"special\">￥{{special}}</div>{{/if}}\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
+  views.draw = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"rain-draw\">\n  <div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<a target=\"_blank\" style=\"{{style}}\" href=\"{{link}}\" class=\"mask\"><em><s></s></em>\n          {{#if cls!=='default'}}<div class=\"product-info {{cls}}\">\n              <div class=\"draw-bg\"></div>\n              <dl class=\"rain-left\"><dt><img src=\"{{img}}\"></dt>\n                  <dd class=\"title\">{{title}}</dd>\n                  {{#if special!=='-1'}}<dd class=\"price\">￥<span class=\"special\">{{special}}</span></dd>{{/if}}\n              </dl>\n          </div>{{/if}}\n      </a>{{/each}}\n  </div>\n</div>";
+  views.photo = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n      {{#each data}}<div class=\"wrap\">\n        <a href=\"{{link}}\" target=\"_blank\">\n          <img src=\"{{img}}\" alt=\"\">\n          <div class=\"rain-product-info\">\n            <div class=\"title\">{{title}}</div>\n            {{#if special!=='-1'}}<div class=\"special\">￥{{special}}</div>{{/if}}\n          </div>\n        </a>\n      </div>{{/each}}\n    </div>";
+  views.recom = "<h3>{{caption}}</h3>\n<div style=\"{{style}}\" class=\"{{cls}}\">\n  <ul class=\"rain-left\">\n    {{#each data}}<li class=\"{{cls}}\">\n        <a href=\"{{link}}\" target=\"_blank\">\n            <img src=\"{{img}}\" alt=\"\">\n            <div class=\"rain-product-info\">\n              <div class=\"title\">{{title}}</div>\n              {{#if special!=='-1'}}<div class=\"special\">￥{{special}}</div>{{/if}}\n        </div></a></li>{{/each}}\n  </ul>\n</div>";
   loader = function(context) {
     var param, url;
     param = {};
@@ -155,6 +155,6 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
   })();
   return Rainlib;
 }, {
-  requires: ['node', 'ajax', 'xtemplate', 'gallery/gallery/rainlib/1.0/index.css']
+  requires: ['node', 'ajax', 'xtemplate', 'gallery/rainlib/1.0/index.css']
 });
 
