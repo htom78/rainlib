@@ -67,7 +67,8 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
     return result;
   };
   render = function(data, context) {
-    var area, areaData, areaDataList, areaId, e, item, result, tpl, _i, _j, _len, _len1, _ref;
+    var area, areaData, areaDataList, areaId, e, isRender, item, result, tpl, _i, _j, _len, _len1, _ref;
+    isRender = false;
     try {
       for (areaId in data) {
         areaDataList = data[areaId];
@@ -75,6 +76,7 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
         if (!areaDataList[0].success) {
           continue;
         }
+        isRender = true;
         result = "";
         for (_i = 0, _len = areaDataList.length; _i < _len; _i++) {
           areaData = areaDataList[_i];
@@ -103,6 +105,9 @@ KISSY.add('gallery/rainlib/1.0/index',function(S, Node, IO, Template) {
       context.result = true;
     } catch (_error) {
       e = _error;
+      context.error(e);
+    }
+    if (isRender === false) {
       context.error(e);
     }
     return null;
